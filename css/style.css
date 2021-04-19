@@ -1,9 +1,9 @@
+@charset "UTF-8";
 #back {
-    background-color: rgba(51, 51, 51, 1);
+   background-color: rgba(51, 51, 51, 1);
 }
 .container {
     height: 700px;
     border-radius: 10px;
     border: solid 2px rgb(0, 255, 164);
-    background-color: rgba(51, 51, 51, 1);
 }
