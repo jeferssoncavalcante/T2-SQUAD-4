@@ -35,7 +35,7 @@ const data = {
   }]
 };
     const config = {
-        type: 'bar',
+        type: 'line',
         data: data,
         options: {
             scales: {
