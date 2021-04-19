@@ -1,8 +1,18 @@
+let options = {
+    method: 'GET',
+    mode: 'cors',
+    cache: 'default'
+}
+fetch(`https://economia.awesomeapi.com.br/json/daily/BTC-BRL/15`, options)
+.then(Response => {Response.json()
+    .then(data => console.log(data))
+})
+.catch(e => console.log(`Deu Erro !` + e,message))
 const data = {
-  labels: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho'],
+  labels: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
   datasets: [{
     label: 'Testando Gráfico',
-    data: [65, 59, 80, 81, 56, 55, 40],
+    data: [65, 59, 80, 81, 56, 55, 49, 90, 100, 87, 56, 25],
     backgroundColor: [
       'rgba(255, 99, 132, 0.2)',
       'rgba(255, 159, 64, 0.2)',
@@ -35,6 +45,6 @@ const data = {
             }
         },
         };    
-    var myChart = new Chart(document.getElementById('myChart'),
+    var myChart = new Chart(document.getElementById('Grafico1'),
     config
 );    
