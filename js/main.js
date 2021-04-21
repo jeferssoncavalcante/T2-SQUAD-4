@@ -18,9 +18,9 @@ fetch(`https://economia.awesomeapi.com.br/json/daily/BTC-BRL/15`, options)
     for (var i = 0; i < dados.length; i++){
         valor.push(dados[i]["bid"])
     };
-})    
+  })    
 }
-carregaJSON();
+
 // -------------------------------------------- //
 // Criando Array com os nomes dos meses e atribuindo o dia //
 monName = new Array("janeiro", "fevereiro", "março", "abril", "maio", "junho", "agosto", "outubro", "novembro", "dezembro");
@@ -52,7 +52,7 @@ const data1 = {
     ],
     datasets: [{
         label: 'Testando Gráfico',
-        data: [valor[0], valor[1], valor[2]],
+        data: valor,
         backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(255, 159, 64, 0.2)',
@@ -207,3 +207,4 @@ var myChart = new Chart(document.getElementById('Grafico3'),
     config3
 );
 // ---------------------------------------------- //
+carregaJSON()
