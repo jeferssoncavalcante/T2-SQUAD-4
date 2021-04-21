@@ -5,7 +5,7 @@ const showData = (result)=>{
     }
 }
 let options = {
-    method: 'GET',
+    method: 'get',
     mode: 'cors',
     cache: 'default'
 }
@@ -77,7 +77,7 @@ const data1 = {
 // ---------------------------------------- //
 // Definindo o tipo de grafico e suas configurações //
 const config1 = {
-    type: 'line',
+    type: 'bar',
     data: data1,
     options: {
         scales: {
@@ -136,7 +136,7 @@ const data2 = {
     }]
 };
 const config2 = {
-    type: 'bar',
+    type: 'line',
     data: data2,
     options: {
         scales: {
@@ -193,7 +193,7 @@ const data3 = {
     }]
 };
 const config3 = {
-    type: 'radar',
+    type: 'polarArea',
     data: data3,
     options: {
         scales: {
