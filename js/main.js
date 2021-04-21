@@ -16,7 +16,7 @@ fetch(`https://economia.awesomeapi.com.br/json/daily/BTC-BRL/15`, options)
     .then(data => {console.log(data);
     dados = data
     for (var i = 0; i < dados.length; i++){
-        valor.push(dados[i]["bid"])
+        valor.push(dados[i]["bid"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
     };
   })    
 }
