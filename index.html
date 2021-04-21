@@ -13,10 +13,22 @@
     <title>Gráficos</title>
 </head>
 <body id="back">
-    <div class="container p-3 my-3 text-white"><canvas id="Grafico1"></canvas></div>
-    <div class="container p-3 my-3 text-white"></canvas></div>
-    <div class="container p-3 my-3 text-white"></canvas></div>
-    <div class="container p-3 my-3 text-white"></canvas></div>
+    <header>
+        <select class="btn dropdown-toggle text-white" id="btn">
+            <option value="" selected class="dropdown-item text-dark">Escolha O Tipo de Gráfico</option>
+            <option value="" class="dropdown-item text-dark"> Gráfico de Linhas</option>
+            <option value="" class="dropdown-item text-dark"> Gráfico de Barras</option>
+            <option value="" class="dropdown-item text-dark"> Gráfico de Pizza</option>
+        </select>
+    </header>
+    <main>
+        <div class="container p-3 my-3 text-white"><canvas id="Grafico1"></canvas></div>
+        <div class="container p-3 my-3 text-white"><canvas id="Grafico2"></canvas></div>
+        <div class="container p-3 my-3 text-white"><canvas id="Grafico3"></canvas></div>
+    </main>
+    <Footer>
+
+    </Footer>
 </body>
 <script src="js/main.js"></script>
 </html>
