@@ -113,7 +113,7 @@ const data2 = {
     ],
     datasets: [{
         label: 'Testando Gráfico',
-        data: [],
+        data: valor,
         backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(255, 159, 64, 0.2)',
@@ -170,7 +170,7 @@ const data3 = {
     ],
     datasets: [{
         label: 'Testando Gráfico',
-        data: [],
+        data: valor,
         backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(255, 159, 64, 0.2)',
