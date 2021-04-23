@@ -1,22 +1,24 @@
 // Carregando API e Convertendo em dados JSON //
-const showData = (result)=>{
-    for (const campo in result) {
-        console.log(campo)
-    }
-}
 let options = {
     method: 'get',
     mode: 'cors',
     cache: 'default'
 }
-valor = new Array()
+selecionaMoeda = new Array("USD", "EUR", "BTC", "LTC", "ARS", "JPY")
+valorCompra = new Array()
+valorVenda = new Array()
+variaçao = new Array()
+valoremAlta = new Array()
 function carregaJSON(filename) {
 fetch(`https://economia.awesomeapi.com.br/json/daily/BTC-BRL/15`, options)
 .then(response => response.json())
     .then(data => {console.log(data);
     dados = data
     for (var i = 0; i < dados.length; i++){
-        valor.push(dados[i]["bid"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        valorCompra.push(dados[i]["bid"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        valorVenda.push(dados[i]["ask"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        variaçao.push(dados[i]["varBid"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        valoremAlta.push(dados[i]["high"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
     };
   })    
 }
@@ -51,25 +53,13 @@ const data1 = {
     `${hoje.getDate() - 14} ${monName[hoje.getMonth()]}`,
     ],
     datasets: [{
-        label: 'Testando Gráfico',
-        data: valor,
+        label: 'Valor de Compra em R$',
+        data: valorCompra,
         backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(255, 205, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(201, 203, 207, 0.2)'
+            'rgba(204, 204, 204, .3)'
         ],
         borderColor: [
-            'rgb(255, 99, 132)',
-            'rgb(255, 159, 64)',
-            'rgb(255, 205, 86)',
-            'rgb(75, 192, 192)',
-            'rgb(54, 162, 235)',
-            'rgb(153, 102, 255)',
-            'rgb(201, 203, 207)'
+            'rgb(0, 255, 164)',
         ],
         borderWidth: 1
     }]
@@ -112,31 +102,19 @@ const data2 = {
     `${hoje.getDate() - 14} ${monName[hoje.getMonth()]}`,
     ],
     datasets: [{
-        label: 'Testando Gráfico',
-        data: valor,
+        label: 'Valor em Alta',
+        data: valoremAlta,
         backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(255, 205, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(201, 203, 207, 0.2)'
+            'rgba(204, 204, 204, .3)'
         ],
         borderColor: [
-            'rgb(255, 99, 132)',
-            'rgb(255, 159, 64)',
-            'rgb(255, 205, 86)',
-            'rgb(75, 192, 192)',
-            'rgb(54, 162, 235)',
-            'rgb(153, 102, 255)',
-            'rgb(201, 203, 207)'
+            'rgb(0, 255, 255)'
         ],
         borderWidth: 1
     }]
 };
 const config2 = {
-    type: 'line',
+    type: 'doughnut',
     data: data2,
     options: {
         scales: {
@@ -169,25 +147,13 @@ const data3 = {
     `${hoje.getDate() - 14} ${monName[hoje.getMonth()]}`,
     ],
     datasets: [{
-        label: 'Testando Gráfico',
-        data: valor,
+        label: 'Valor de Venda de em R$',
+        data: valorVenda,
         backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(255, 205, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(201, 203, 207, 0.2)'
+            'rgba(204, 204, 204, .3)'
         ],
         borderColor: [
-            'rgb(255, 99, 132)',
-            'rgb(255, 159, 64)',
-            'rgb(255, 205, 86)',
-            'rgb(75, 192, 192)',
-            'rgb(54, 162, 235)',
-            'rgb(153, 102, 255)',
-            'rgb(201, 203, 207)'
+            'rgb(255, 15, 255)'
         ],
         borderWidth: 1
     }]
@@ -207,4 +173,48 @@ var myChart = new Chart(document.getElementById('Grafico3'),
     config3
 );
 // ---------------------------------------------- //
+// Criando Grafico 4 //
+const data4 = {
+    labels: [`${hoje.getDate()} ${monName[hoje.getMonth()]}`,
+    `${hoje.getDate() - 1} ${monName[hoje.getMonth()]}`,
+    `${hoje.getDate() - 2} ${monName[hoje.getMonth()]}`,
+    `${hoje.getDate() - 3} ${monName[hoje.getMonth()]}`,
+    `${hoje.getDate() - 4} ${monName[hoje.getMonth()]}`,
+    `${hoje.getDate() - 5} ${monName[hoje.getMonth()]}`,
+    `${hoje.getDate() - 6} ${monName[hoje.getMonth()]}`,
+    `${hoje.getDate() - 7} ${monName[hoje.getMonth()]}`,
+    `${hoje.getDate() - 8} ${monName[hoje.getMonth()]}`,
+    `${hoje.getDate() - 9} ${monName[hoje.getMonth()]}`,
+    `${hoje.getDate() - 10} ${monName[hoje.getMonth()]}`,
+    `${hoje.getDate() - 11} ${monName[hoje.getMonth()]}`,
+    `${hoje.getDate() - 12} ${monName[hoje.getMonth()]}`,
+    `${hoje.getDate() - 13} ${monName[hoje.getMonth()]}`,
+    `${hoje.getDate() - 14} ${monName[hoje.getMonth()]}`,
+    ],
+    datasets: [{
+        label: 'Variação do em R$',
+        data: variaçao,
+        backgroundColor: [
+            'rgba(204, 204, 204, .3)'
+        ],
+        borderColor: [
+            'rgb(255, 15, 15)'
+        ],
+        borderWidth: 1
+    }]
+};
+const config4 = {
+    type: 'line',
+    data: data4,
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+            }
+        }
+    },
+};
+var myChart = new Chart(document.getElementById('Grafico4'),
+    config4
+);
 carregaJSON()
