@@ -40,3 +40,9 @@ div#caixa {
     border: solid 2px rgb(255, 15, 15);
     padding: 10px;
 }
+div#reload {
+    font-size: 20pt;
+    position: relative;
+    margin: auto;
+    text-align: center;
+}

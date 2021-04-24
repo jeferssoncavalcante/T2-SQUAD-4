@@ -16,7 +16,8 @@
     <header>
         <div id="caixa">
             <label for="select" class="text-white">Escolha a Moeda Desejada :</label>
-            <select name="" id="select" class="btn btn-outline-secondary dropdown-toggle" onchange="LimpaJSON">
+            <select name="" id="select" class="btn btn-outline-secondary dropdown-toggle">
+                <option value="">Selecione Aqui</option>
                 <option value="">Dólar</option>
                 <option value="">Euro</option>
                 <option value="">BitCoin</option>
@@ -33,7 +34,7 @@
         <div class="container p-3 my-3 text-white"><canvas id="Grafico4"></canvas></div>
     </main>
     <Footer>
-
+       <div id="reload"><p><a href="" onclick="location.reload()" id="select" class="btn btn-outline-secondary">Clique aqui para Mudar de Moeda</a></p></div> 
     </Footer>
 </body>
 <script src="js/main.js"></script>

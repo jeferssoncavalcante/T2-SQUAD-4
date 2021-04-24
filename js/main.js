@@ -1,10 +1,27 @@
+// Função para Selecionar Moeda //
+var select = document.getElementById("select");
+select.addEventListener('change', function carregaJSON(){
+    if (select.selectedIndex == 1){
+        carregaDolar();
+    } else if (select.selectedIndex == 2) {
+        carregaEuro()
+    } else if (select.selectedIndex == 3) {
+        carregaBitcoin()
+    } else if (select.selectedIndex == 4) {
+        carregaLitecoin()
+    } else if (select.selectedIndex == 5) {
+        carregaArg()
+    } else {
+        carregaYen()
+    }
+})
+// -------------------------------- //
 // Carregando API e Convertendo em dados JSON //
 let options = {
     method: 'get',
     mode: 'cors',
     cache: 'default'
 }
-var select = document.getElementById("select");
 selecionaMoeda = new Array('USD', 'EUR', 'BTC', 'LTC', 'ARS', 'JPY')
 valorCompra = new Array()
 valorVenda = new Array()
@@ -89,6 +106,7 @@ function carregaYen(filename) {
     })    
 }
 // -------------------------------------------- //
+onload 
 // Criando Array com os nomes dos meses e atribuindo o dia //
 monName = new Array("janeiro", "fevereiro", "março", "abril", "maio", "junho", "agosto", "outubro", "novembro", "dezembro");
 hoje = new Date;
@@ -282,21 +300,3 @@ const config4 = {
 var myChart = new Chart(document.getElementById('Grafico4'),
     config4
 );
-function LimpaJSON (){
-    location.reload()
-}
-select.addEventListener('change',function carregaJSON(){
-    if (select.selectedIndex == 0){
-        carregaDolar();
-    } else if (select.selectedIndex == 1) {
-        carregaEuro()
-    } else if (select.selectedIndex == 2) {
-        carregaBitcoin()
-    } else if (select.selectedIndex == 3) {
-        carregaLitecoin()
-    } else if (select.selectedIndex == 4) {
-        carregaArg()
-    } else {
-        carregaYen()
-    }
-})
