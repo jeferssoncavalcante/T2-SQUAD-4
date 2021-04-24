@@ -275,7 +275,7 @@ const data4 = {
     `${hoje.getDate() - 14} ${monName[hoje.getMonth()]}`,
     ],
     datasets: [{
-        label: 'Variação do em R$',
+        label: 'Variação em R$',
         data: variaçao,
         backgroundColor: [
             'rgba(204, 204, 204, .3)'
