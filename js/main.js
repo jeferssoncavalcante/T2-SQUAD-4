@@ -4,13 +4,14 @@ let options = {
     mode: 'cors',
     cache: 'default'
 }
-selecionaMoeda = new Array("USD", "EUR", "BTC", "LTC", "ARS", "JPY")
+var select = document.getElementById("select");
+selecionaMoeda = new Array('USD', 'EUR', 'BTC', 'LTC', 'ARS', 'JPY')
 valorCompra = new Array()
 valorVenda = new Array()
 variaçao = new Array()
 valoremAlta = new Array()
-function carregaJSON(filename) {
-fetch(`https://economia.awesomeapi.com.br/json/daily/BTC-BRL/15`, options)
+function carregaDolar(filename) {
+fetch(`https://economia.awesomeapi.com.br/json/daily/USD-BRL/15`, options)
 .then(response => response.json())
     .then(data => {console.log(data);
     dados = data
@@ -22,7 +23,71 @@ fetch(`https://economia.awesomeapi.com.br/json/daily/BTC-BRL/15`, options)
     };
   })    
 }
-
+function carregaEuro(filename) {
+    fetch(`https://economia.awesomeapi.com.br/json/daily/EUR-BRL/15`, options)
+    .then(response => response.json())
+        .then(data => {console.log(data);
+        dados = data
+        for (var i = 0; i < dados.length; i++){
+            valorCompra.push(dados[i]["bid"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+            valorVenda.push(dados[i]["ask"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+            variaçao.push(dados[i]["varBid"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+            valoremAlta.push(dados[i]["high"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        };
+      })    
+    }
+function carregaBitcoin(filename) {
+    fetch(`https://economia.awesomeapi.com.br/json/daily/BTC-BRL/15`, options)
+    .then(response => response.json())
+        .then(data => {console.log(data);
+        dados = data
+        for (var i = 0; i < dados.length; i++){
+            valorCompra.push(dados[i]["bid"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+            valorVenda.push(dados[i]["ask"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+            variaçao.push(dados[i]["varBid"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+            valoremAlta.push(dados[i]["high"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        };
+        })    
+    }
+function carregaLitecoin(filename) {
+    fetch(`https://economia.awesomeapi.com.br/json/daily/LTC-BRL/15`, options)
+    .then(response => response.json())
+        .then(data => {console.log(data);
+        dados = data
+        for (var i = 0; i < dados.length; i++){
+            valorCompra.push(dados[i]["bid"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+            valorVenda.push(dados[i]["ask"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+            variaçao.push(dados[i]["varBid"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+            valoremAlta.push(dados[i]["high"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        };
+        })    
+    }
+function carregaArg(filename) {
+    fetch(`https://economia.awesomeapi.com.br/json/daily/ARS-BRL/15`, options)
+        .then(response => response.json())
+        .then(data => {console.log(data);
+        dados = data
+        for (var i = 0; i < dados.length; i++){
+            valorCompra.push(dados[i]["bid"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+            valorVenda.push(dados[i]["ask"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+            variaçao.push(dados[i]["varBid"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+            valoremAlta.push(dados[i]["high"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        };
+    })    
+}
+function carregaYen(filename) {
+    fetch(`https://economia.awesomeapi.com.br/json/daily/JPY-BRL/15`, options)
+        .then(response => response.json())
+        .then(data => {console.log(data);
+        dados = data
+        for (var i = 0; i < dados.length; i++){
+            valorCompra.push(dados[i]["bid"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+            valorVenda.push(dados[i]["ask"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+            variaçao.push(dados[i]["varBid"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+            valoremAlta.push(dados[i]["high"]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        };
+    })    
+}
 // -------------------------------------------- //
 // Criando Array com os nomes dos meses e atribuindo o dia //
 monName = new Array("janeiro", "fevereiro", "março", "abril", "maio", "junho", "agosto", "outubro", "novembro", "dezembro");
@@ -102,8 +167,8 @@ const data2 = {
     `${hoje.getDate() - 14} ${monName[hoje.getMonth()]}`,
     ],
     datasets: [{
-        label: 'Valor em Alta',
-        data: valoremAlta,
+        label: 'Valor de Venda em R$',
+        data: valorVenda,
         backgroundColor: [
             'rgba(204, 204, 204, .3)'
         ],
@@ -147,8 +212,8 @@ const data3 = {
     `${hoje.getDate() - 14} ${monName[hoje.getMonth()]}`,
     ],
     datasets: [{
-        label: 'Valor de Venda de em R$',
-        data: valorVenda,
+        label: 'Valor Mais Alto',
+        data: valoremAlta,
         backgroundColor: [
             'rgba(204, 204, 204, .3)'
         ],
@@ -217,4 +282,21 @@ const config4 = {
 var myChart = new Chart(document.getElementById('Grafico4'),
     config4
 );
-carregaJSON()
+function LimpaJSON (){
+    location.reload()
+}
+select.addEventListener('change',function carregaJSON(){
+    if (select.selectedIndex == 0){
+        carregaDolar();
+    } else if (select.selectedIndex == 1) {
+        carregaEuro()
+    } else if (select.selectedIndex == 2) {
+        carregaBitcoin()
+    } else if (select.selectedIndex == 3) {
+        carregaLitecoin()
+    } else if (select.selectedIndex == 4) {
+        carregaArg()
+    } else {
+        carregaYen()
+    }
+})
